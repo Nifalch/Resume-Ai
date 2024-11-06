@@ -5,6 +5,8 @@ import io
 import fitz  # PyMuPDF
 import google.generativeai as genai
 from dotenv import load_dotenv
+import time
+import google.api_core.exceptions
 
 # Load environment variables
 load_dotenv()
