@@ -20,10 +20,18 @@ def extract_text_from_pdf(uploaded_file):
     return text
 
 # AI model function
+# AI model function with error handling
 def get_gemini_response(input, pdf_content, prompt):
     model = genai.GenerativeModel('gemini-1.5-pro')
-    response = model.generate_content([input, pdf_content, prompt])
-    return response.text
+    try:
+        response = model.generate_content([input, pdf_content, prompt])
+        return response.text
+    except google.api_core.exceptions.ResourceExhausted:
+        st.error("The service is temporarily unavailable due to high demand. Please try again after a few moments.")
+        return None
+    except google.api_core.exceptions.GoogleAPICallError as e:
+        st.error(f"An error occurred with the AI service: {e}")
+        return None
 
 # Streamlit App Config with Custom Favicon
 st.set_page_config(
