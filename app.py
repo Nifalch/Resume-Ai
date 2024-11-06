@@ -148,8 +148,10 @@ with col4:
 # Prompts
 input_prompt1 = "As an experienced HR Manager, review the provided resume against the job description. Assess how well the candidate’s profile aligns with the role, noting key strengths and areas for improvement."
 input_prompt3 = "As a skilled ATS system, evaluate the resume based on the job description. Provide a match percentage, list missing keywords, and share an overall assessment."
-input_prompt_cover_letter = "Based on the job description and my uploaded resume, create a professional cover letter that highlights my relevant skills and experiences."
-input_prompt_resume = "Using the provided job description and resume, create a tailored resume highlighting the relevant skills, experience, and qualifications that match the job description."
+input_prompt_cover_letter = "Based on the job description and my uploaded resume, create a professional, three-paragraph cover letter. In the first paragraph, mention the [role] I'm applying for and how I learned about this opportunity. In the second paragraph, highlight my relevant skills, experiences, and accomplishments that align with the job description. In the third and final paragraph, express my enthusiasm for the role, thank the recruiters for their time, and convey my excitement for the next stages of the hiring process.and sincerly [name]
+"
+input_prompt_resume = "Using the provided job description and the uploaded resume, create a tailored resume that best fits the requirements of the job. 
+Make sure to highlight the relevant skills, experience(make sure in bullet points), and qualifications from the resume that match the job description. If any areas of improvement or additions are needed, suggest modifications to ensure the resume aligns with the job's key requirements. The tailored resume should showcase the most relevant aspects of the candidate's experience that directly correspond to the role, skills, and qualifications mentioned in the job description."
 
 # Analysis & Response
 if analyze_button:
