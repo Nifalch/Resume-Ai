@@ -235,6 +235,6 @@ st.markdown("""
         Developed by <strong>Muhammed Nifal C H</strong> |
         <a href='https://in.linkedin.com/in/muhammed-nifal-c-h' target='_blank'>LinkedIn</a> |
         <a href='https://github.com/Nifalch' target='_blank'>GitHub</a> |
-        <a href='https://nifalch.github.io/portfolio' target='_blank'>Portfolio</a>
+        <a href='https://nifalch.github.io/portfolio-website/' target='_blank'>Portfolio</a>
     </div>
 """, unsafe_allow_html=True)
