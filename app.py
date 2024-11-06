@@ -25,6 +25,8 @@ def extract_text_from_pdf(uploaded_file):
 # AI model function with error handling
 def get_gemini_response(input, pdf_content, prompt):
     model = genai.GenerativeModel('gemini-1.5-pro')
+    time.sleep(10)
+    
     try:
         response = model.generate_content([input, pdf_content, prompt])
         return response.text
