@@ -21,9 +21,4 @@ A Streamlit web app designed to help users tailor their resumes and generate per
   - `google-generativeai` - For interacting with Gemini AI.
   - `dotenv` - For managing environment variables.
 
-## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/resume-ai.git
-   cd resume-ai
