@@ -14,24 +14,30 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 # Helper function to convert PDF to image
 import fitz  # PyMuPDF
 
-def convert_pdf_to_image(pdf_file):
-    # Open the provided PDF file
-    doc = fitz.open(pdf_file)
-    
-    # Loop through all the pages (for now, we'll convert only the first page)
-    page = doc.load_page(0)  # 0 is the first page
-    pix = page.get_pixmap()  # Convert page to a pixmap (image)
-    
-    # Save the pixmap as a PNG image
-    image = pix.tobytes("png")  # Converts to PNG in bytes
-    
-    return image
+load_dotenv()
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-# Example of using the function with the uploaded file
-uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
-if uploaded_file is not None:
-    pdf_content = convert_pdf_to_image(uploaded_file)
-    st.image(pdf_content)  # Display the image in Streamlit
+# Helper function to convert PDF to image
+def input_pdf_setup(uploaded_file):
+    if uploaded_file is not None:
+        images = pdf2image.convert_from_bytes(uploaded_file.read())
+        first_page = images[0]
+        
+        # Convert the first page of PDF to bytes
+        img_byte_arr = io.BytesIO()
+        first_page.save(img_byte_arr, format='JPEG')
+        img_byte_arr = img_byte_arr.getvalue()
+        
+        # Prepare PDF content for AI model
+        pdf_parts = [
+            {
+                "mime_type": "image/jpeg",
+                "data": base64.b64encode(img_byte_arr).decode()
+            }
+        ]
+        return pdf_parts
+    else:
+        raise FileNotFoundError("No file uploaded")
 
 
 # AI model function
